@@ -64,7 +64,6 @@ const AdminPanel = () => {
                     </div>
                 )}
             </aside>
-
             {/* --- MAIN CONTENT --- */}
             <main className="flex-1 flex flex-col h-full overflow-y-auto no-scrollbar relative">
 

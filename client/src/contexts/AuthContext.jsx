@@ -64,6 +64,10 @@ export const AuthProvider = ({ children }) => {
             }
             setUser(response.data.user);
 
+            if (loggedUser.role === 'admin') {
+                await fetchUsers();
+            }
+
 
             toast.update(toastId, {
                 render: 'Login successfully',

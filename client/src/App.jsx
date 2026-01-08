@@ -32,7 +32,6 @@ function App() {
     return () => clearTimeout(timer);
   }, []);
 
-  // 2️⃣ მაუსის წერტილის ეფექტი
   useEffect(() => {
     const dot = document.getElementById("cursor-dot");
     if (!dot) return;
@@ -46,7 +45,6 @@ function App() {
   }, [loading]);
 
 
-  // 4️⃣ თუ იტვირთება — აჩვენე Spinner
   if (loading) {
     return (
       <div className="flex justify-center items-center h-screen bg-[rgba(0,0,0,1)]">
@@ -57,7 +55,7 @@ function App() {
     );
   }
 
-  // 5️⃣ როცა ჩაიტვირთა — აჩვენე საიტი
+
   return (
     <div className="w-full overflow-x-hidden">
       {/* მაუსის წერტილი */}
