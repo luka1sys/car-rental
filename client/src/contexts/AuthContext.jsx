@@ -2,10 +2,6 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { authoLogin, getAllUsers, loginUser, logoutUser, signupUser, updateUser } from "../services/authservice";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-
-
-
-
 const AuthContext = createContext();
 export const useAuth = () => useContext(AuthContext);
 
@@ -150,6 +146,3 @@ export const AuthProvider = ({ children }) => {
     )
 
 }
-
-
-

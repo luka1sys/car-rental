@@ -23,7 +23,7 @@ app.use(cookieParser())
 // middleWare - JSON ფორმატის request body-ს კითხულობს
 app.use(express.json())
 app.use(cors({
-  origin: 'http://localhost:5173',  // შენი React პორტი
+  origin: process.env.CLIENT_URL,  // შენი React პორტი
   credentials: true
 }));
 
