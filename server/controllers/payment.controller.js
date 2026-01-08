@@ -37,8 +37,8 @@ const createBookingCheckoutSession = catchAsync(async (req, res, next) => {
         metadata: {
             bookingId: booking._id.toString(),
         },
-        success_url: `http://localhost:5173/paymentsuccess?bookingId=${booking._id}`,
-        cancel_url: `http://localhost:5173/bookingFailed`,
+        success_url: `${process.env.CLIENT_URL}/paymentsuccess?bookingId=${booking._id}`,
+        cancel_url: `${process.env.CLIENT_URL}/`,
     });
 
     res.json({ url: session.url });
