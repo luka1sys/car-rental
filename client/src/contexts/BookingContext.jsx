@@ -82,14 +82,26 @@ export const BookingProvider = ({ children }) => {
     }
 
     const deletedBooking = async (id) => {
+        const toastId = toast.loading('processing...');
         try {
             await deleteBooking(id); // call API
             // remove from allBookings
             setAllBookings(prev => prev.filter(booking => booking._id !== id));
             // remove from myBookings
             setMyBookings(prev => prev.filter(booking => booking._id !== id));
+            toast.update(toastId, {
+                render: 'Deleted successfully',
+                type: 'success',
+                isLoading: false,
+                autoClose: 2000
+            })
         } catch (err) {
-            alert(err?.response?.data?.message || "Failed to delete booking");
+            toast.update(toastId, {
+                render: err?.response?.data?.message || "Booking failed",
+                type: "error",
+                isLoading: false,
+                autoClose: 3000,
+            });
         }
     };
 

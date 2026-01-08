@@ -19,27 +19,52 @@ export const CarsProvider = ({ children }) => {
     }
 
     const addCar = async (formData) => {
+        const toastId = toast.loading('processing...');
 
         try {
             const res = await createCar(formData);
 
             // ახალი მანქანის დამატება state-ში refresh-ის გარეშე
             setCars(prev => [res.data.car, ...prev]);
+            toast.update(toastId, {
+                render: 'Added successfully',
+                type: 'success',
+                isLoading: false,
+                autoClose: 2000
+            })
 
             return res.data;
         } catch (err) {
-            alert(err.response?.data?.message || "Failed to add car");
+            toast.update(toastId, {
+                render: err?.response?.data?.message || "Failed to add car",
+                type: "error",
+                isLoading: false,
+                autoClose: 3000,
+            });
 
         }
     };
 
     const deletedCar = async (id) => {
+        const toastId = toast.loading('processing...');
         try {
+
             const res = await deleteCar(id);
             setCars(prev => prev.filter(car => car._id !== id));
+            toast.update(toastId, {
+                render: 'Deleted successfully',
+                type: 'success',
+                isLoading: false,
+                autoClose: 2000
+            })
             return res.data;
         } catch (err) {
-            alert(err.response?.data?.message || "Failed to delete car");
+            toast.update(toastId, {
+                render: err?.response?.data?.message || "Failed to update car",
+                type: "error",
+                isLoading: false,
+                autoClose: 3000,
+            });
         }
     };
 

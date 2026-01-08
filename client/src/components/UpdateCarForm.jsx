@@ -50,7 +50,7 @@ const UpdateCarForm = ({ car, onClose }) => {
         const result = await updateCar(car._id, formData);
 
         if (result) {
-            alert("Vehicle details updated successfully!");
+            
             onClose();
         }
     };
