@@ -53,16 +53,20 @@ const AdminPanel = () => {
                         >
                             System Settings
                         </button>
+                        {showSettings && (
+                            <div className="mt-1 ml-2">
+                                <button
+                                    onClick={logout}
+                                    className="w-full text-left flex items-center p-3 text-gray-400 hover:text-[#ff3131] transition-colors font-bold uppercase text-[10px] tracking-widest"
+                                >
+                                    Logout <span className="ml-2">→</span>
+                                </button>
+                            </div>
+                        )}
                     </div>
                 </nav>
 
-                {showSettings && (
-                    <div className="p-6 border-t mb-[40%] border-white/10">
-                        <button onClick={logout} className="flex items-center text-gray-400 hover:text-[#ff3131] transition-colors font-bold uppercase text-xs tracking-widest">
-                            Logout →
-                        </button>
-                    </div>
-                )}
+
             </aside>
             {/* --- MAIN CONTENT --- */}
             <main className="flex-1 flex flex-col h-full overflow-y-auto no-scrollbar relative">
