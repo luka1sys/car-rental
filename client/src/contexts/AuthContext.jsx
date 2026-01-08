@@ -105,16 +105,29 @@ export const AuthProvider = ({ children }) => {
     }
 
     const updateUserrr = async (id, updateData) => {
+        const toastId = toast.loading('Updating...');
+
         try {
             const { data } = await updateUser(id, updateData);
             // update local users state
             setUsers((prev) =>
                 prev.map((u) => (u._id === id ? data.user : u))
             );
-            alert("User updated successfully");
+
+            toast.update(toastId, {
+                render: 'Updated successfully',
+                type: 'success',
+                isLoading: false,
+                autoClose: 2000
+            })
             return data.user;
         } catch (err) {
-            alert(err.response?.data?.message || "Failed to update user");
+            toast.update(toastId, {
+                render: err.response?.data?.message || "Failed to update user",
+                type: "error",
+                isLoading: false,
+                autoClose: 3000,
+            });
             throw err;
         }
     };
