@@ -57,7 +57,7 @@ const AdminPanel = () => {
                 </nav>
 
                 {showSettings && (
-                    <div className="p-6 border-t border-white/10">
+                    <div className="p-6 border-t mb-[40%] border-white/10">
                         <button onClick={logout} className="flex items-center text-gray-400 hover:text-[#ff3131] transition-colors font-bold uppercase text-xs tracking-widest">
                             Logout →
                         </button>
