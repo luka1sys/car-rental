@@ -1,0 +1,12 @@
+
+import axios from 'axios'
+const API = axios.create({
+    baseURL: import.meta.env.VITE_SERVER_URL + "/api/users",
+    withCredentials: true //  აუცილებელია cookies გადასაგზავნად
+});
+export const signupUser = (data) => API.post('/signup', data)
+export const loginUser = (data) => API.post('/login', data)
+export const logoutUser = () => API.get('/logout')
+export const getAllUsers = () => API.get('/')
+export const updateUser = (id, data) => API.patch(`/update/${id}`, data);
+export const authoLogin = () => API.get('/me')
