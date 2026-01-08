@@ -22,7 +22,7 @@ const createSendToken = (user, statusCode, res) => {
         // javascript ბრაუზერში  ვერ წაიკითხავს cookie ს 
         httpOnly: true,
         // 
-        sameSite: 'lax'
+        sameSite: 'none'
     })
     // ვაბრუნებთ სტატუსის კოდს და ახალ მომხმარებელს Json ფორმატში 
     res.status(statusCode).json({
@@ -108,10 +108,10 @@ const updateUser = catchAsync(async (req, res, next) => {
     }
 
     const userId = req.params.id; // URL პარამეტრიდან ვიღებთ
-    const { fullname, email,  role } = req.body;
+    const { fullname, email, role } = req.body;
 
     const updateData = { fullname, email, role };
-   
+
     const user = await User.findByIdAndUpdate(userId, updateData, { new: true });
 
     res.status(200).json({
