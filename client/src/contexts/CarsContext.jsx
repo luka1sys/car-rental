@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react"
 import { createCar, deleteCar, fetchCars, updateCarService, } from "../services/carService";
+import { toast } from "react-toastify";
 
 
 
@@ -18,6 +19,7 @@ export const CarsProvider = ({ children }) => {
     }
 
     const addCar = async (formData) => {
+
         try {
             const res = await createCar(formData);
 
@@ -42,13 +44,25 @@ export const CarsProvider = ({ children }) => {
     };
 
     const updateCar = async (id, updateData) => {
+        const toastId = toast.loading('processing...');
         try {
             const res = await updateCarService(id, updateData);
             setCars(prev => prev.map(car => car._id === id ? res.data.car : car));
+            toast.update(toastId, {
+                render: 'Updated successfully',
+                type: 'success',
+                isLoading: false,
+                autoClose: 2000
+            })
             return res.data;
-        } catch {
-            alert(err.response?.data?.message || "Failed to update car");
 
+        } catch (err) {
+            toast.update(toastId, {
+                render: err?.response?.data?.message || "Failed to update car",
+                type: "error",
+                isLoading: false,
+                autoClose: 3000,
+            });
         }
     }
     return (
