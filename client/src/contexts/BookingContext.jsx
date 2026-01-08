@@ -3,6 +3,7 @@ import { createBooking as apiCreateBooking, deleteBooking, getAllBookings, getMy
 import { createCheckout } from "../services/paymentService";
 import { useEffect } from "react";
 import { useAuth } from "./AuthContext";
+import { toast } from "react-toastify";
 
 const BookingContext = createContext();
 export const useBooking = () => useContext(BookingContext);
@@ -12,7 +13,7 @@ export const BookingProvider = ({ children }) => {
     const [myBookings, setMyBookings] = useState([]);
     const [allBookings, setAllBookings] = useState([]);
     const [error, setError] = useState('');
-    const {user} = useAuth();
+    const { user } = useAuth();
     useEffect(() => {
         if (user) {
             fetchMyBookings();
@@ -27,13 +28,25 @@ export const BookingProvider = ({ children }) => {
     }, [user])
 
     const createBooking = async (data) => {
+        const toastId = toast.loading('processing...');
         try {
             const response = await apiCreateBooking(data);
             setBooking(response.data.booking);
-            alert("Booking successful!");
+            toast.update(toastId, {
+                render: 'processed successfully',
+                type: 'success',
+                isLoading: false,
+                autoClose: 2000
+            })
+
             return response.data.booking;
         } catch (err) {
-            alert(err?.response?.data?.message || "Booking failed");
+            toast.update(toastId, {
+                render: err?.response?.data?.message || "Booking failed",
+                type: "error",
+                isLoading: false,
+                autoClose: 3000,
+            });
             setError(err?.response?.data?.message || "Booking failed");
             throw err;
         }
