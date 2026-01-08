@@ -20,7 +20,6 @@ const Footer = () => {
                         <li className="hover:text-white transition-colors cursor-pointer">Accessibility</li>
                     </ul>
                 </div>
-
                 {/* Quick Links */}
                 <div>
                     <h2 className="text-lg sm:text-xl lg:text-[23px] font-semibold mb-4 sm:mb-6 text-center sm:text-left">Quick Links</h2>
