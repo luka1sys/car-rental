@@ -156,4 +156,4 @@ const verifyEmail = catchAsync(async (req, res, next) => {
 
 
 // ექსპორტს ვუკეთებთ ფუნქციებსს 
-module.exports = { signUp, login, logout, updateUser, verifyEmail, getAllUsers }
+module.exports = { signUp, login, logout, updateUser, verifyEmail, getAllUsers, signToken }
