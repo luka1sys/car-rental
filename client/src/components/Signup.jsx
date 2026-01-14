@@ -3,6 +3,7 @@ import { useAuth } from "../contexts/AuthContext";
 import { Mail, Eye, EyeOff, ArrowRight, User } from 'react-feather';
 import { IconLock } from '@tabler/icons-react';
 import { SiGoogle, SiFacebook, SiApple } from 'react-icons/si';
+import { googleAuth } from "../services/authservice";
 
 const Signup = () => {
     const { signup } = useAuth();
@@ -132,26 +133,14 @@ const Signup = () => {
             {/* Social Login Buttons */}
             <div className="grid grid-cols-3 gap-3">
                 <button
+                    onClick={googleAuth}
                     type="button"
                     className="flex items-center justify-center gap-2 px-4 py-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition-all"
                 >
                     <SiGoogle size={20} />
                     <span className="text-sm font-medium hidden sm:inline">Google</span>
                 </button>
-                <button
-                    type="button"
-                    className="flex items-center justify-center gap-2 px-4 py-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition-all"
-                >
-                    <SiFacebook size={20} className="text-blue-600" />
-                    <span className="text-sm font-medium hidden sm:inline">Facebook</span>
-                </button>
-                <button
-                    type="button"
-                    className="flex items-center justify-center gap-2 px-4 py-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition-all"
-                >
-                    <SiApple size={20} />
-                    <span className="text-sm font-medium hidden sm:inline">Apple</span>
-                </button>
+
             </div>
         </form>
     );

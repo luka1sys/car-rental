@@ -15,6 +15,7 @@ const bookingRouter = require('./routes/booking.routes');
 const cookieParser = require('cookie-parser');
 const e = require('cors');
 const paymentRouter = require('./routes/payment.routes');
+const oauthRouter = require('./routes/oauth.routes');
 // ვტვირთავთ .env ფაილში შენახულ კონფიგურაციებს (მაგ: MONGO_URL, PORT)
 dotenv.config();
 // ვქმნით express აპლიკაციას
@@ -31,9 +32,10 @@ app.use(cors({
 // app.use('/uploads', express.static('uploads'));
 // ვუთითებთ რომ '/users' როუტზე ყველა მოთხოვნა გადავიდეს authRouter-ში
 app.use('/api/users', authRouter)
+app.use('/api/users/oauth', oauthRouter);
 app.use('/api/cars', carRouter)
 app.use('/api/booking', bookingRouter)
-app.use('/api/checkout',paymentRouter)
+app.use('/api/checkout', paymentRouter)
 // Error handling middleware → ყველა შეცდომა რომელიც next(err)-ით მოვა აქ დამუშავდება
 app.use((err, req, res, next) => {
   // 
