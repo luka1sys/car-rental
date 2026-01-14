@@ -3,7 +3,7 @@ const SliderData = () => {
     return (
         <div className="w-full flex items-center justify-center py-5">
             <div
-                style={{ backgroundImage: "url('https://atlantablackcarlimo.com/wp-content/uploads/2025/08/BLACK-CAR-BLOG.webp')" }}
+                style={{ backgroundImage: "url('/imgi_57_hero-bg.jpg')" }}
                 className="w-[95%] lg:w-[97%] border border-black rounded-[30px] md:rounded-[40px] overflow-hidden min-h-[850px] lg:h-[950px] bg-cover bg-center"
             >
                 {/* Overlay & Content Container */}
