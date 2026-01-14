@@ -1,7 +1,7 @@
 const Categories = () => {
     return (
         <section className='min-h-[300px] sm:min-h-[400px] md:min-h-[450px] w-full max-w-[97%] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-[10px] px-4 sm:px-6 md:px-8'>
-            <div className='group rounded-[30px] sm:rounded-[40px] overflow-hidden cursor-pointer relative bg-[url(./luxury-collection-img-1.jpg)] bg-center bg-cover transition-[background-size] duration-[800ms] ease-in-out hover:bg-[length:115%_115%] dvv1 animate-on-scroll min-h-[250px] sm:min-h-[300px] md:min-h-[350px] lg:h-[450px]'>
+            <div className='group rounded-[30px] sm:rounded-[40px] overflow-hidden cursor-pointer relative bg-[url(/luxury-collection-img-1.jpg)] bg-center bg-cover transition-[background-size] duration-[800ms] ease-in-out hover:bg-[length:115%_115%] dvv1 animate-on-scroll min-h-[250px] sm:min-h-[300px] md:min-h-[350px] lg:h-[450px]'>
                 <div className='bg-black/30 w-full h-full'>
                     <p className='absolute top-6 sm:top-8 md:top-[30px] text-white text-2xl sm:text-3xl md:text-[35px] font-semibold left-6 sm:left-8 md:left-[40px]'>
                         Sport Car
@@ -13,6 +13,7 @@ const Categories = () => {
                     </button>
                 </div>
             </div>
+  
 
             <div className='group rounded-[30px] sm:rounded-[40px] overflow-hidden cursor-pointer relative bg-[url(/luxury-collection-img-2.webp)] bg-center bg-cover transition-[background-size] duration-[800ms] ease-in-out hover:bg-[length:115%_115%] dvv2 animate-on-scroll min-h-[250px] sm:min-h-[300px] md:min-h-[350px] lg:h-[450px]'>
                 <div className='bg-black/30 w-full h-full'>
