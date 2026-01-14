@@ -4,6 +4,7 @@ import { Mail, Eye, EyeOff, ArrowRight } from 'react-feather';
 import { IconLock } from '@tabler/icons-react';
 import { SiGoogle, SiFacebook, SiApple } from 'react-icons/si';
 import { useNavigate } from "react-router-dom";
+import { googleAuth } from "../services/authservice";
 
 const Login = () => {
     const { login } = useAuth();
@@ -20,7 +21,7 @@ const Login = () => {
         };
 
         login(data);
-        
+
     };
 
     return (
@@ -39,8 +40,8 @@ const Login = () => {
                         required
                         className="w-full px-4 py-3 pl-12 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent outline-none transition-all"
                     />
-                    <Mail 
-                        size={20} 
+                    <Mail
+                        size={20}
                         className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"
                     />
                 </div>
@@ -60,8 +61,8 @@ const Login = () => {
                         required
                         className="w-full px-4 py-3 pl-12 pr-12 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent outline-none transition-all"
                     />
-                    <IconLock 
-                        size={20} 
+                    <IconLock
+                        size={20}
                         className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"
                     />
                     <button
@@ -112,25 +113,12 @@ const Login = () => {
             {/* Social Login Buttons */}
             <div className="grid grid-cols-3 gap-3">
                 <button
+                    onClick={googleAuth}
                     type="button"
                     className="flex items-center justify-center gap-2 px-4 py-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition-all"
                 >
                     <SiGoogle size={20} />
                     <span className="text-sm font-medium hidden sm:inline">Google</span>
-                </button>
-                <button
-                    type="button"
-                    className="flex items-center justify-center gap-2 px-4 py-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition-all"
-                >
-                    <SiFacebook size={20} className="text-blue-600" />
-                    <span className="text-sm font-medium hidden sm:inline">Facebook</span>
-                </button>
-                <button
-                    type="button"
-                    className="flex items-center justify-center gap-2 px-4 py-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition-all"
-                >
-                    <SiApple size={20} />
-                    <span className="text-sm font-medium hidden sm:inline">Apple</span>
                 </button>
             </div>
         </form>

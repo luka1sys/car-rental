@@ -1,5 +1,6 @@
 
 import axios from 'axios'
+const BASEURL = import.meta.env.VITE_SERVER_URL + "/api/users"
 const API = axios.create({
     baseURL: import.meta.env.VITE_SERVER_URL + "/api/users",
     withCredentials: true //  აუცილებელია cookies გადასაგზავნად
@@ -11,5 +12,5 @@ export const getAllUsers = () => API.get('/')
 export const updateUser = (id, data) => API.patch(`/update/${id}`, data);
 export const authoLogin = () => API.get('/me')
 export const googleAuth = () => {
-    window.location.href = `${baseURL}/oauth/google`;
+    window.location.href = `${BASEURL}/oauth/google`;
 };
