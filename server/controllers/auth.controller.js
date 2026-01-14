@@ -94,9 +94,13 @@ const login = catchAsync(async (req, res, next) => {
 
 const logout = (req, res) => {
     res.cookie('lt', '', {
-        maxAge: 1,        // მალე ვადაგასული გახდეს
-        httpOnly: true    // უსაფრთხოებისთვის
+        maxAge: 0,
+        httpOnly: true,
+        secure: process.env.NODE_ENV === 'dev' ? false : true,
+        sameSite: 'none',
+        path: '/'
     });
+
     res.status(200).json({
         status: 'success',
         message: 'Logged out successfully'
