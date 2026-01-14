@@ -13,10 +13,11 @@ const userSchema = mongoose.Schema({
     },
     password: {
         type: String,
-        required: true,
+        required: function () {
+            // password საჭირო მხოლოდ მაშინ, როცა არაა OAuth მომხმარებელი
+            return !this.oauthProvider;
+        },
         minlength: 6,
-
-
     },
     role: {
         type: String,
@@ -25,7 +26,22 @@ const userSchema = mongoose.Schema({
     },
     isVerified: { // email-ვერიფიკაციისთვის
         type: Boolean,
+        default: false
+    },
+    isActive: {
+
+        type: Boolean,
         default: true
+    },
+
+    oauthProvider: {
+        type: String,
+        enum: ["google", "facebook", "github", null],
+        default: null
+    },
+    oauthId: {
+        type: String,
+        default: null
     },
     verificationToken: String
 })
